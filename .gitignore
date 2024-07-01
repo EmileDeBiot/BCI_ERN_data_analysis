@@ -1,0 +1,14 @@
+texts/
+data/
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+models/
+viz/
+results/
+archive/
+google_alerts/
+.env
+
+nilearn_cache/
+.vscode
