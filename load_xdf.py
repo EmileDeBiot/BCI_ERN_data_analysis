@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import mne
 from pathlib import Path
+import os
 
 data_path = Path("D:/pro")
 
@@ -31,9 +32,10 @@ def find_xdf_files(data_path: Path):
     Returns:
         xdf_files (list): List of all .xdf files in the data folder."""
     xdf_files = []
-    for file in data_path.iterdir():
-        if file.suffix == ".xdf":
-            xdf_files.append(file)
+    for dirpath, dirnames, filenames in os.walk(data_path):
+        for file in filenames:
+            if Path(file).suffix == ".xdf":
+                xdf_files.append(Path(dirpath) / Path(file))
     return xdf_files
 
 def create_info(data: list) -> mne.Info:
